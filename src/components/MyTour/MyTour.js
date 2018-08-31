@@ -31,4 +31,4 @@ Create your tour below.</h1>
     }
   }
 
-  export default myTour
+  export default MyTour
