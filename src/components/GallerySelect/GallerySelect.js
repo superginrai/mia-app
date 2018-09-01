@@ -3,6 +3,8 @@ import GalleryCard from '../GalleryCard/GalleryCard';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import FinalTour from '../FinalTour/FinalTour';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
     container: {
@@ -22,9 +24,9 @@ class GallerySelect extends Component {
         super(props)
 
         this.state = {
-            galleryList: [{ name: "Pretty Painting", checked: false }, { name: "A Painting of a Taco", checked: false }],
+            galleryList: [{ name: "Pretty Painting", checked: false, }, { name: "A Painting of a Taco", checked: false }],
             tourList: [],
-            finalTour: []
+            // finalTour: []
         };
     }
 
@@ -39,18 +41,27 @@ class GallerySelect extends Component {
         // }
     };
 
-    createTour = () => {
-        console.log('I made a tour');
-        this.setState({
-            finalTour: [
-                ...this.state.tourList
-            ]
-        })
-        console.log('my tour is', this.state.finalTour);
-    };
+    // createTour = () => {
+    //     console.log('I made a tour');
+    //     this.setState({
+    //         finalTour: [
+    //             ...this.state.tourList
+    //         ]
+    //     })
+    //     console.log('my tour is', this.state.finalTour);
+    // };
 
-    componentDidUpdate() {
-        console.log('my tour is', this.state.finalTour);
+    // componentDidUpdate() {
+    //     console.log('my tour is', this.state.finalTour);
+    // }
+
+    createTour = () => {
+        const action = {
+            type: 'ADD_TO_TOUR',
+            payload: this.state.tourList,
+        };
+        this.props.dispatch(action);
+        this.props.history.push('/finaltour');
     }
 
     render() {
@@ -65,11 +76,11 @@ class GallerySelect extends Component {
                 </div>
                 <Button color="primary" variant="contained" className={classes.button} onClick={this.createTour}>ADD TO TOUR</Button>
             </div>
-            <div>
+            {/* <div>
                 <ul>
-                    {this.state.finalTour.map(tourStop => <li>12:00 - {tourStop.name}</li>)}
+                    {this.state.tourList.map(tourStop => <FinalTour tourStop={tourStop}/> )}
                 </ul>
-            </div>
+            </div> */}
             </div>
         );
 
@@ -85,4 +96,4 @@ GallerySelect.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(GallerySelect);
+export default connect()(withStyles(styles)(GallerySelect));

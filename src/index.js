@@ -4,10 +4,22 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, applyMiddleware } from '../node_modules/redux';
+import { createStore, applyMiddleware, combineReducers } from '../node_modules/redux';
 import logger from 'redux-logger';
 
+const tour = (state = [], action) => {
+    if (action.type === 'ADD_TO_TOUR') {
+        return [...state, ...action.payload];
+    } else if (action.type === 'RESET') {
+        return [];
+    }
+    return state;
+};
+
 const storeInstance = createStore(
+    combineReducers({
+       tour,
+    }),
     applyMiddleware(logger),
 )
 
