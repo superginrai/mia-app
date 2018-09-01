@@ -12,13 +12,14 @@ class MyTour extends Component {
   onChangeDate = date => this.setState({ date })
   onChangeTime = time => this.setState({ time })
 
-  chooseDateTime = () => {
+  //Sends chosen time in sate to redux and advances user to exhibits page
+  chooseTime = () => {
     const action = {
       type: 'ADD_A_TIME',
       payload: this.state.time,
     };
     this.props.dispatch(action);
-    this.props.history.push('/gallery');
+    this.props.history.push('/exhibits');
   }
 
   render() {
@@ -36,7 +37,7 @@ class MyTour extends Component {
           value={this.state.time}
         />
         <br />
-        <button onClick={this.chooseDateTime}>NEXT</button>
+        <button onClick={this.chooseTime}>NEXT</button>
       </div>
     );
   }
