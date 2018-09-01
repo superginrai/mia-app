@@ -12,9 +12,9 @@ class FinalTour extends Component {
     render() {
       return (
         <div>
-            <h1>Check out yo tourzzzz</h1>
+            <h1>Your Tour</h1>
             <ul>
-            {this.props.reduxState.tour.map((tourStop) => <div><h2>{tourStop.name}</h2></div>)}
+            {this.props.reduxState.tour.map((tourStop) => <h2>{tourStop.name}</h2>)}
 
             </ul>
         </div>

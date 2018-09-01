@@ -3,7 +3,6 @@ import GalleryCard from '../GalleryCard/GalleryCard';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import FinalTour from '../FinalTour/FinalTour';
 import { connect } from 'react-redux';
 
 const styles = theme => ({
@@ -69,18 +68,11 @@ class GallerySelect extends Component {
         let content = null;
 
         content = (
-            <div>
             <div className="Galleries" >
                 <div className={classes.container} >
                     {this.state.galleryList.map(gallery => <div style={{ gridColumnEnd: 'span 3' }}><GalleryCard gallery={gallery} name={gallery.name} checked={gallery.checked} addToTour={this.addToTour} /></div>)}
                 </div>
                 <Button color="primary" variant="contained" className={classes.button} onClick={this.createTour}>ADD TO TOUR</Button>
-            </div>
-            {/* <div>
-                <ul>
-                    {this.state.tourList.map(tourStop => <FinalTour tourStop={tourStop}/> )}
-                </ul>
-            </div> */}
             </div>
         );
 

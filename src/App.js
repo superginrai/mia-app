@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
 import GallerySelect from './components/GallerySelect/GallerySelect';
 import MyTour from './components/MyTour/MyTour';
 import Exhibits from './components/Exhibits/Exhibits';
