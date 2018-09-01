@@ -17,6 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Checkbox from '@material-ui/core/Checkbox';
+// import './GalleryCard.css'
 
 const styles = theme => ({
     card: {
@@ -48,7 +49,8 @@ class GalleryCard extends React.Component {
     state = {
         gallery: this.props.gallery,
         checkedForTour: this.props.gallery.checked,
-        expanded: false };
+        expanded: false
+    };
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
@@ -57,11 +59,11 @@ class GalleryCard extends React.Component {
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked });
         console.log('ccccccc', this.state.checkedForTour)
-      };
+    };
 
     // componentDidUpdate() {
     //     this.props.addToTour(this.state.gallery);
-      
+
     //   }
 
     render() {
@@ -73,17 +75,18 @@ class GalleryCard extends React.Component {
                     <CardHeader
                         avatar={
                             <Avatar aria-label="Recipe" className={classes.avatar}>
-                                R
+                                MIA
               </Avatar>
                         }
                         action={
                             // <IconButton>
                             //     <MoreVertIcon />
                             // </IconButton>
-                            <Checkbox checked={this.state.checkedForTour} onChange={this.handleChange('checkedForTour')} onClick={() => this.props.addToTour(this.props.gallery)}/>
+                            // <label class="container">
+                                <Checkbox checked={this.state.checkedForTour} onChange={this.handleChange('checkedForTour')} onClick={() => this.props.addToTour(this.props.gallery)} />
                         }
                         title={this.props.name}
-                        subheader="September 14, 2016"
+                        // subheader="September 14, 2016"
                     />
                     <CardMedia
                         className={classes.media}
@@ -96,12 +99,12 @@ class GalleryCard extends React.Component {
             </Typography>
                     </CardContent>
                     <CardActions className={classes.actions} disableActionSpacing>
-                        <IconButton aria-label="Add to favorites">
+                        {/* <IconButton aria-label="Add to favorites">
                             <FavoriteIcon />
                         </IconButton>
                         <IconButton aria-label="Share">
                             <ShareIcon />
-                        </IconButton>
+                        </IconButton> */}
                         <IconButton
                             className={classnames(classes.expand, {
                                 [classes.expandOpen]: this.state.expanded,

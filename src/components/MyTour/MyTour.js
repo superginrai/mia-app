@@ -12,6 +12,15 @@ class MyTour extends Component {
   onChangeDate = date => this.setState({ date })
   onChangeTime = time => this.setState({ time })
 
+  chooseDateTime = () => {
+    const action = {
+      type: 'ADD_A_TIME',
+      payload: this.state.time,
+    };
+    this.props.dispatch(action);
+    this.props.history.push('/gallery');
+  }
+
   render() {
     return (
       <div>
@@ -23,12 +32,14 @@ class MyTour extends Component {
           value={this.state.date}
         />
         <TimePicker
-          onChange={this.onChange}
+          onChange={this.onChangeTime}
           value={this.state.time}
         />
+        <br />
+        <button onClick={this.chooseDateTime}>NEXT</button>
       </div>
     );
   }
 }
 
-export default MyTour
+export default connect()(MyTour)

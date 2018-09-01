@@ -16,9 +16,19 @@ const tour = (state = [], action) => {
     return state;
 };
 
+const time = (state = '', action) => {
+    if (action.type === 'ADD_A_TIME') {
+        return [...state, action.payload];
+    } else if (action.type === 'RESET') {
+        return [];
+    }
+    return state;
+};
+
 const storeInstance = createStore(
     combineReducers({
        tour,
+       time,
     }),
     applyMiddleware(logger),
 )

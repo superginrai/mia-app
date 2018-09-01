@@ -25,10 +25,10 @@ class GallerySelect extends Component {
         this.state = {
             galleryList: [{ name: "Pretty Painting", checked: false, }, { name: "A Painting of a Taco", checked: false }],
             tourList: [],
-            // finalTour: []
         };
     }
 
+    //checkbox adds the gallery to the tourList array (but currently continues to add it if you uncheck it)
     addToTour = (gallery) => {
         console.log(gallery.checked, gallery);
         // if (gallery.checked === true) {
@@ -40,20 +40,7 @@ class GallerySelect extends Component {
         // }
     };
 
-    // createTour = () => {
-    //     console.log('I made a tour');
-    //     this.setState({
-    //         finalTour: [
-    //             ...this.state.tourList
-    //         ]
-    //     })
-    //     console.log('my tour is', this.state.finalTour);
-    // };
-
-    // componentDidUpdate() {
-    //     console.log('my tour is', this.state.finalTour);
-    // }
-
+    //sends the tourList array to redux for storage and advances you to finalTour component
     createTour = () => {
         const action = {
             type: 'ADD_TO_TOUR',
@@ -72,7 +59,7 @@ class GallerySelect extends Component {
                 <div className={classes.container} >
                     {this.state.galleryList.map(gallery => <div style={{ gridColumnEnd: 'span 3' }}><GalleryCard gallery={gallery} name={gallery.name} checked={gallery.checked} addToTour={this.addToTour} /></div>)}
                 </div>
-                <Button color="primary" variant="contained" className={classes.button} onClick={this.createTour}>ADD TO TOUR</Button>
+                <button onClick={this.createTour}>ADD TO TOUR</button>
             </div>
         );
 

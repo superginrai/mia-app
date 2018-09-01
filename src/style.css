@@ -650,7 +650,7 @@ input.search[type=search] {
     width: 200px;
   }
 }
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   position: absolute;
   left: -9999px;
 }
@@ -689,7 +689,7 @@ input[type="checkbox"]:checked + label.checkbox-label::before {
   font-family: "Mia Black", "Helvetica Neue", Helvetica, san-serif;
   color: #231f20;
   text-align: center;
-}
+} */
 input:-moz-placeholder {
   color: transparent;
 }
