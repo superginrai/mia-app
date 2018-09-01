@@ -17,6 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Checkbox from '@material-ui/core/Checkbox';
+import mia from '../../images/mia.png'
 
 const styles = theme => ({
     card: {
@@ -40,7 +41,7 @@ const styles = theme => ({
         transform: 'rotate(180deg)',
     },
     avatar: {
-        backgroundColor: red[500],
+        backgroundColor: '#4F4F4F',
     },
 });
 
@@ -67,17 +68,16 @@ class GalleryCard extends React.Component {
             <div>
                 <Card className={classes.card}>
                     <CardHeader
-                        avatar={
-                            <Avatar aria-label="Recipe" className={classes.avatar}>
-                                MIA
-              </Avatar>
-                        }
+                        // avatar={
+                        //     <Avatar aria-label="MIA" className={classes.avatar}>
+                        //         Mia
+                        //     </Avatar>
+                        // }
                         action={
 
                             <Checkbox checked={this.state.checkedForTour} onChange={this.handleChange('checkedForTour')} onClick={() => this.props.addToTour(this.props.gallery)} />
                         }
                         title={this.props.gallery.name}
-                        subheader={this.props.gallery.year}
                     />
                     <CardMedia
                         className={classes.media}
@@ -85,7 +85,7 @@ class GalleryCard extends React.Component {
                         title="Gallery Picture"
                     />
                     <CardContent>
-              
+
                     </CardContent>
                     <CardActions className={classes.actions} disableActionSpacing>
 

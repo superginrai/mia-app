@@ -72,7 +72,7 @@ class DepartmentCard extends React.Component {
                         title="Department Picture"
                     />
                     <CardActions className={classes.actions} disableActionSpacing>
-                        <Button className={classes.button} onclick={() => this.props.chooseGallery()}>{this.props.department.name}</Button>
+                        <Button className={classes.button} onClick={() => this.props.chooseGallery()}>{this.props.department.name}</Button>
                     </CardActions>
                 </Card>
             </div>
