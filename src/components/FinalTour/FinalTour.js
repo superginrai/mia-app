@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+const mapReduxStateToProps = (reduxState) => (
+    { reduxState }
+);
 
 class FinalTour extends Component {
     state = {
@@ -7,10 +12,12 @@ class FinalTour extends Component {
     render() {
       return (
         <div>
-            <h1>Check out yo tourzzzz</h1>
+            <h1>Your Tour</h1>
+            <h2>{this.props.reduxState.time}</h2>
+            {this.props.reduxState.tour.map((tourStop) => <h2>{tourStop.name}</h2>)}
         </div>
       );
     }
   }
 
-  export default FinalTour
+  export default connect(mapReduxStateToProps) (FinalTour);
