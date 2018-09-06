@@ -18,13 +18,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Checkbox from '@material-ui/core/Checkbox';
 import mia from '../../images/mia.png'
+import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
     card: {
         MaxWidth: 550,
     },
     media: {
-        height: 0,
+        height: 350,
         paddingTop: '56.25%', // 16:9
     },
     actions: {
@@ -75,7 +76,8 @@ class GalleryCard extends React.Component {
                         // }
                         action={
 
-                            <Checkbox checked={this.state.checkedForTour} onChange={this.handleChange('checkedForTour')} onClick={() => this.props.addToTour(this.props.gallery)} />
+                            <Checkbox checked={this.state.checkedForTour} onChange={this.handleChange('checkedForTour')} 
+                            onClick={() => this.props.addToTour(this.props.gallery)} />
                         }
                         title={this.props.gallery.name}
                     />
@@ -105,6 +107,11 @@ class GalleryCard extends React.Component {
                             <Typography paragraph variant="body2">
                                 {this.props.gallery.description}
                             </Typography>
+                            <Typography>         
+                            <Button size="small" color="link">
+            <a href={this.props.gallery.url} target="_blank">View More Gallery Artworks</a>
+        </Button>
+        </Typography>
                         </CardContent>
                     </Collapse>
                 </Card>

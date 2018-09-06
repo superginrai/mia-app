@@ -13,10 +13,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
 import Button from '@material-ui/core/Button';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = theme => ({
     card: {
-        height: 250,
         maxWidth: 400,
     },
     media: {
@@ -52,7 +54,8 @@ const styles = theme => ({
 
 class DepartmentCard extends React.Component {
     state = {
-        expanded: false
+        expanded: false,
+        department: this.props.department,
     };
 
     handleExpandClick = () => {
@@ -72,8 +75,25 @@ class DepartmentCard extends React.Component {
                         title="Department Picture"
                     />
                     <CardActions className={classes.actions} disableActionSpacing>
-                        <Button className={classes.button} onClick={() => this.props.chooseGallery()}>{this.props.department.name}</Button>
+                    <Button className={classes.button} onClick={() => this.props.addExhibit(this.props.department)}>{this.props.department.name}</Button>
+                        <IconButton
+                            className={classnames(classes.expand, {
+                                [classes.expandOpen]: this.state.expanded,
+                            })}
+                            onClick={this.handleExpandClick}
+                            aria-expanded={this.state.expanded}
+                            aria-label="Show more"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
                     </CardActions>
+                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph variant="body2">
+                                {this.props.department.description}
+                            </Typography>
+                        </CardContent>
+                    </Collapse>
                 </Card>
             </div>
         );

@@ -2,12 +2,16 @@
   "name": "mia-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@material-ui/core": "^1.5.1",
     "@material-ui/icons": "^2.0.3",
+    "axios": "^0.18.0",
+    "moment": "^2.22.2",
     "react": "^16.4.2",
     "react-date-picker": "^6.12.0",
     "react-dom": "^16.4.2",
+    "react-moment": "^0.7.9",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
@@ -16,7 +20,9 @@
     "redux-logger": "^3.0.6"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts build && node server/server.js",
+    "client": "react-scripts start",
+    "server": "nodemon --watch server server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

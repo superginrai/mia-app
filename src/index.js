@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-import App from './App';
+import App from './components/App/App';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, combineReducers } from '../node_modules/redux';
@@ -16,8 +16,17 @@ const tour = (state = [], action) => {
     return state;
 };
 
-const time = (state = '', action) => {
-    if (action.type === 'ADD_A_TIME') {
+const exhibit = (state = [], action) => {
+    if (action.type === 'ADD_EXHIBIT') {
+        return [...state, ...action.payload];
+    } else if (action.type === 'RESET') {
+        return [];
+    }
+    return state;
+};
+
+const startTime = (state = '', action) => {
+    if (action.type === 'ADD_A_STARTTIME') {
         return [...state, action.payload];
     } else if (action.type === 'RESET') {
         return [];
@@ -25,10 +34,32 @@ const time = (state = '', action) => {
     return state;
 };
 
+const endTime = (state = '', action) => {
+    if (action.type === 'ADD_A_ENDTIME') {
+        return [...state, action.payload];
+    } else if (action.type === 'RESET') {
+        return [];
+    }
+    return state;
+};
+
+const date = (state = '', action) => {
+    if (action.type === 'ADD_A_DATE') {
+        return [...state, action.payload];
+    } else if (action.type === 'RESET') {
+        return [];
+    }
+    return state;
+};
+
+
 const storeInstance = createStore(
     combineReducers({
        tour,
-       time,
+       startTime,
+       endTime,
+       date,
+       exhibit
     }),
     applyMiddleware(logger),
 )

@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('server/public'));
 
-app.use( '/api', router );
+app.use( '/api/exhibits', router );
 
 let port = 5000 ||process.env.PORT;
 

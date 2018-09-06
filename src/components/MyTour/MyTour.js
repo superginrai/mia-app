@@ -6,20 +6,45 @@ import TimePicker from 'react-time-picker'
 class MyTour extends Component {
   state = {
     date: new Date(),
-    time: '10:00',
+    startTime: '10:00',
+    endTime: '11:00',
   }
 
   onChangeDate = date => this.setState({ date })
-  onChangeTime = time => this.setState({ time })
-
+  onChangeStartTime = startTime => this.setState({ startTime })
+  onChangeEndTime = endTime => this.setState({ endTime })
   //Sends chosen time in sate to redux and advances user to exhibits page
-  chooseTime = () => {
+  chooseStartTime = () => {
     const action = {
-      type: 'ADD_A_TIME',
-      payload: this.state.time,
+      type: 'ADD_A_STARTTIME',
+      payload: this.state.startTime,
     };
     this.props.dispatch(action);
     this.props.history.push('/exhibits');
+  }
+
+  chooseEndTime = () => {
+    const action = {
+      type: 'ADD_A_ENDTIME',
+      payload: this.state.endTime,
+    };
+    this.props.dispatch(action);
+    this.props.history.push('/exhibits');
+  }
+
+  chooseDate = () => {
+    const action = {
+      type: 'ADD_A_DATE',
+      payload: this.state.date,
+    };
+    this.props.dispatch(action);
+    this.props.history.push('/exhibits');
+  }
+
+  onClick = () => {
+    this.chooseStartTime();
+    this.chooseEndTime();
+    this.chooseDate();
   }
 
   render() {
@@ -33,11 +58,15 @@ class MyTour extends Component {
           value={this.state.date}
         />
         <TimePicker
-          onChange={this.onChangeTime}
-          value={this.state.time}
+          onChange={this.onChangeStartTime}
+          value={this.state.startTime}
+        />
+        <TimePicker
+          onChange={this.onChangeEndTime}
+          value={this.state.endTime}
         />
         <br />
-        <button onClick={this.chooseTime}>NEXT</button>
+        <button onClick={this.onClick}>NEXT</button>
       </div>
     );
   }

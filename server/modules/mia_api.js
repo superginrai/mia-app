@@ -1,7 +1,7 @@
 const axios = require('axios'); 
 
 const miaSearchForDepartment = axios.create({
-  baseURL: 'https://search.artsmia.org/%20department:',
+  baseURL: 'https://search.artsmia.org/%20department:PhotographyandNewMedia',
 });
 
 const miaImage = axios.create({
